@@ -2,5 +2,14 @@
 src = "src"
 out = "out"
 libs = ["lib"]
+[rpc_endpoints]
+mumbai = "${POLYGON_MUMBAI_NETWORK}"
+binance = "${BINANCE_SMART_CHAIN}"
+seploia="${SEPOLIA_NETWORK}"
+
+
+[etherscan]
+binance = { key = "JBQWVR4FKG7WGAU82TZWZGI16Y9MHTN6DX", url = "https://data-seed-prebsc-1-s1.binance.org:8545/" }
+
 
 # See more config options https://github.com/foundry-rs/foundry/tree/master/config
