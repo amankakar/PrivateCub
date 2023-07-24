@@ -10,7 +10,7 @@ contract EscrowScript is Script {
         vm.startBroadcast(deployerPrivateKey);
 // sepolia :: 0x694AA1769357215DE4FAC081bf1f309aDC325306
 // polygon :: 0xd0D5e3DB44DE05E9F294BB0a3bEEaF030DE24Ada
-        Escrow escrow = new Escrow(0x10bE57E8A14188e7D86e95679D0819A8A1a12717);
+        Escrow escrow = new Escrow(0x2B575390e64C5A03F624B14b8d0D077d3cDa77C7 , 0xE3E172D49e6569B334B1BF4F4984Fc9C830a73Ab);
         console.logAddress(address(escrow));
         vm.stopBroadcast();
     }

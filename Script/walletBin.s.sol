@@ -9,8 +9,8 @@ contract MyScriptBinance is Script {
         uint256 deployerPrivateKey = vm.envUint("PRIVATE_KEY");
         vm.startBroadcast(deployerPrivateKey);
 
-        Shieldpay wallet = new Shieldpay(0xAE140507D1539Bc53d7CEe05f62e282E033500f2,0xE3E172D49e6569B334B1BF4F4984Fc9C830a73Ab, 0x2514895c72f50D8bd4B4F9b1110F0D6bD2c97526);
-
+        Shieldpay wallet = new Shieldpay(0xd1a5444F99BE6C3EefBc6998c5e7F0F069025d98,address(0xe9e7CEA3DedcA5984780Bafc599bD69ADd087D56) ,  address(0x0567F2323251f0Aab15c8dFb1967E4e8A7D42aeE));
+        console.logAddress(address(wallet));
         vm.stopBroadcast();
     }
 }

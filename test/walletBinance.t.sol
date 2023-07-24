@@ -42,9 +42,57 @@ contract WalletTestBinance is Test {
         // console.logUint(busdInstance.allowance(member1 , address(walletBinance)));
         console.logAddress(member1);
         console.logAddress(address(busdInstance));
-        walletBinance.transferBusd(receiver , 9900000000000000000); 
+        walletBinance.transferBusd(receiver , 2000000000000000000); 
         vm.stopPrank();
         assertEq(990000000000000000, busdInstance.balanceOf(owner));
+    }
+
+
+      function testChangeFeeTransferBUSD() public {
+        vm.selectFork(binanceFork);
+        busdInstance = IERC20(0xe9e7CEA3DedcA5984780Bafc599bD69ADd087D56);
+        walletBinance= new Shieldpay(owner  , address(0xe9e7CEA3DedcA5984780Bafc599bD69ADd087D56) ,  address(0x0567F2323251f0Aab15c8dFb1967E4e8A7D42aeE));
+        vm.deal(member1,   10 ether);
+        vm.prank(owner);
+        walletBinance.setBUSDFee(2000000000000000000);
+        address receiver = vm.addr(1);
+        address usdOwner = 0xF07C30E4CD6cFff525791B4b601bD345bded7f47; // busd20 token owner address
+        vm.prank(usdOwner);
+        busdInstance.transfer(member1 , 99000000000000000000);
+        vm.startPrank(member1);
+        busdInstance.approve(address(walletBinance) , 99000000000000000000);
+        // console.logUint(busdInstance.allowance(member1 , address(walletBinance)));
+        console.logAddress(member1);
+        console.logAddress(address(busdInstance));
+        walletBinance.transferBusd(receiver , 4000000000000000000); 
+        vm.stopPrank();
+        assertEq(2000000000000000000, busdInstance.balanceOf(owner));
+    }
+
+
+      function testNewOwnerChangeFeeTransferBUSD() public {
+        vm.selectFork(binanceFork);
+        busdInstance = IERC20(0xe9e7CEA3DedcA5984780Bafc599bD69ADd087D56);
+        walletBinance= new Shieldpay(owner  , address(0xe9e7CEA3DedcA5984780Bafc599bD69ADd087D56) ,  address(0x0567F2323251f0Aab15c8dFb1967E4e8A7D42aeE));
+        vm.deal(member1,   10 ether);
+        vm.prank(owner);
+        walletBinance.setNewOwner(address(this));
+
+        walletBinance.setBUSDFee(3000000000000000000);
+
+
+        address receiver = vm.addr(1);
+        address usdOwner = 0xF07C30E4CD6cFff525791B4b601bD345bded7f47; // busd20 token owner address
+        vm.prank(usdOwner);
+        busdInstance.transfer(member1 , 99000000000000000000);
+        vm.startPrank(member1);
+        busdInstance.approve(address(walletBinance) , 99000000000000000000);
+        // console.logUint(busdInstance.allowance(member1 , address(walletBinance)));
+        console.logAddress(member1);
+        console.logAddress(address(busdInstance));
+        walletBinance.transferBusd(receiver , 4000000000000000000); 
+        vm.stopPrank();
+        assertEq(3000000000000000000, busdInstance.balanceOf(address(this)));
     }
  
 

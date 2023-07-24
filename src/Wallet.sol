@@ -4,23 +4,7 @@
 pragma solidity ^0.8.0;
 import "@chainlink/contracts/src/v0.8/interfaces/AggregatorV3Interface.sol";
 
-interface IERC20 {
-    function transferFrom(
-        address sender,
-        address recipient,
-        uint256 amount
-    ) external returns (bool);
 
-    function transfer(address recipient, uint256 amount)
-        external
-        returns (bool);
-         function approve(address recipient, uint256 amount)
-        external
-        returns (bool);
-    function mint(address account, uint256 amount) external;
-
-    function balanceOf(address account) external view returns (uint256);
-}
 
 
 
@@ -29,7 +13,7 @@ contract Shieldpay {
     address private _owner;
     int256 private _fee;
     // will provide chain specifc price feed.
-       AggregatorV3Interface internal priceFeed;
+    AggregatorV3Interface internal priceFeed;
 
     error ZeroAmountSent();
     error NotOwner();

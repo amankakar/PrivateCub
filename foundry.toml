@@ -9,7 +9,7 @@ seploia="${SEPOLIA_NETWORK}"
 
 
 [etherscan]
-binance = { key = "JBQWVR4FKG7WGAU82TZWZGI16Y9MHTN6DX", url = "https://data-seed-prebsc-1-s1.binance.org:8545/" }
+binance = { key = "DQ9ZQP351CG58WIJHYUMK4TQQXHHYTT1HJ", url = "https://bsc-dataseed.binance.org/" }
 
 
 # See more config options https://github.com/foundry-rs/foundry/tree/master/config

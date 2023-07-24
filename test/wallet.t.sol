@@ -57,6 +57,18 @@ contract WalletTest is Test {
         vm.stopPrank();
     }
 
+     function testChangeGasFee1() public {
+        vm.selectFork(sepoliaFork);
+        walletSepolia= new Shieldpay(address(this)  , address(0x5f4eC3Df9cbd43714FE2740f5E3616155c5b8419));
+        walletSepolia.setGasFee(99 * 1e6);
+        vm.deal(member1,   20 ether);
+        vm.startPrank(member1);
+        uint256 balanceBefore = address(this).balance;
+        walletSepolia.transfer{value: 10 ether}(receiver); 
+        assertGe(address(this).balance , balanceBefore);
+        vm.stopPrank();
+    }
+
   function testFailChangeGasFee() public {
         vm.selectFork(sepoliaFork);
         walletSepolia= new Shieldpay(address(this)  , address(0x5f4eC3Df9cbd43714FE2740f5E3616155c5b8419));

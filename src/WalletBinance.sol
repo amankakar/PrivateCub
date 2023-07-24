@@ -4,20 +4,8 @@ pragma solidity ^0.8.0;
 import "@chainlink/contracts/src/v0.8/interfaces/AggregatorV3Interface.sol";
 
 
-interface IERC20 {
-    function transferFrom(
-        address sender,
-        address recipient,
-        uint256 amount
-    ) external returns (bool);
+  import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 
-    function transfer(address recipient, uint256 amount)
-        external
-        returns (bool);
-    function approve(address spender, uint256 amount) external returns (bool);
-    function balanceOf(address account) external view returns (uint256);
-
-}
 
 
 
@@ -42,7 +30,7 @@ contract Shieldpay {
         _busdAddress = busdAddress;
         priceFeed = AggregatorV3Interface(priceFeedAddress);
         _feeBNB= 99 * 1e6;
-        _feeBUSD = 99*1e16;
+        _feeBUSD = 0.99 * 1e18; // initial fee 0.99$ = 990000000000000000. formula = 0.99 * 1e18 
     }
 
     modifier onlyOwner() {
